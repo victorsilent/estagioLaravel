@@ -2,15 +2,17 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;	
 
 class Vagas extends Model
 {
     protected $fillable = [
     	'titulo',
     	'corpo',
-    	'min_salario',
-    	'max_salario',
+    	'area',
+    	'semestre',
+    	'auxilio',
+    	'carga_horaria',
     	'nome_empresa',
     	'publicacao'
     ];

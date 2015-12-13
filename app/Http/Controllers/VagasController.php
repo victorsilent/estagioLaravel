@@ -52,7 +52,7 @@ class VagasController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -75,7 +75,6 @@ class VagasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**

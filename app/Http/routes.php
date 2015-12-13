@@ -14,6 +14,6 @@
 
 //Route::resource('app','AppController'); 
 
-Route::get('/','AppController@index');
-
 Route::resource('vagas','VagasController');
+Route::post('home','HomeController@filtro');
+Route::get('home','HomeController@index');

@@ -6,65 +6,68 @@
 					<div class="panel panel-default">
 					  <div class="panel-body">
 					    <div class="form-group">
-							<label for="sel1">Selecione a sua área</label>
-							<select class="form-control" id="sel1">
-								<option>Saude</option>
-								<option>Humanas</option>
-								<option>Exatas</option>
-								<option>Loucuras</option>
-							</select>
+					    {!! Form::open(['url' => 'home','method'=>'get']) !!}
 
-							<label for="sel1">Semestre</label>
-							<select class="form-control" id="sel1">
-								<option>Qualquer</option>
-								<option>4+</option>
-								<option>5+</option>
-								<option>2 para conclusão</option>
-							</select>
+						    	{!! Form::label('title','Seleciona uma área:') !!}
+						    	{!! Form::select('area',array(
+							    	'Saude' => 'Saude',
+							    	'Humanas' => 'Humanas',
+							    	'Exatas' => 'Exatas',
+							    	'Biológicas' => 'Biológicas'),
+						    	 null,
+						    	 array('class' => 'form-control')); !!}
 
-							<label for="sel1">Média Salarial</label>
-							<select class="form-control" id="sel1">
-								<option>R$ 600</option>
-								<option>R$ 600</option>
-								<option>R$ 600</option>
-								<option>R$ 600</option>
-							</select>
 
-							<label for="sel1">Carga horária</label>
-							<select class="form-control" id="sel1">
-								<option>20h</option>
-								<option>25h</option>
-								<option>30h</option>
-								<option>35h</option>
-							</select>
+						    	{!! Form::label('title','Semestre:') !!}
+						    	{!! Form::select('semestre',array(
+							    	'false' => 'Qualquer',
+							    	'1' => '1', 
+							    	'2' => '2',
+							    	'3' => '3',
+							    	'4' => '4'),
+						    	null,
+						    	array('class' => 'form-control')); !!}
 
-							<label for="sel1">Outros</label>
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-							<hr>
-							<button type="submit" class="btn btn-default form-control">Filtrar</button>
+						    	{!! Form::label('auxilio','Valor do auxílio:') !!}
+						    	{!! Form::select('auxilio',array(
+							    	'false' => 'Qualquer',
+							    	'400' => 'R$ 400', 
+							    	'800' => 'R$ 800',
+							    	'1000' => 'R$ 1000',
+							    	'1200' => 'R$ 1200'),
+						    	null,
+						    	array('class' => 'form-control')); !!}
+
+						    	{!! Form::label('title','Carga horária:') !!}
+						    	{!! Form::select('horas',array(
+							    	'false' => 'Qualquer',
+							    	'12' => '12h', 
+							    	'20' => '20h',
+							    	'30' => '30h'),
+						    	null,
+						    	array('class' => 'form-control')); !!}
+
+								<hr><!-- Quebra de linha -->
+
+						    	{!! Form::submit('Filtrar',['class'=>'btn btn-primary form-control']) !!}
+					    {!! Form::close() !!}
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8">
 			@foreach($vagas as $vaga)
+
 				<div class="panel panel-default">
-					<div class="panel-heading"><h4>{{$vaga->titulo}} - {{$vaga->nome_empresa}} </h4></div>
+					<div class="panel-heading"><h4>{{$vaga->titulo}} - {{$vaga->nome_empresa}} </h4>
+						<div class="text-muted">Auxilio: R${{$vaga->auxilio}}  | Carga horaria: {{$vaga->carga_horaria}}h</div>
+					</div>
 					<div class="panel-body">
-						<div class="text-muted">R$ {{$vaga->min_salario}} ~ R$ {{$vaga->max_salario}}</div>
+						
 						<p>
 							{!! nl2br(e($vaga->corpo)) !!}
 						</p>
-						<ul class="nav nav-pills">
-							<li role="presentation"><a href="#">PHP</a></li>
-							<li role="presentation"><a href="#">SOLID</a></li>
-							<li role="presentation"><a href="#">Laravel</a></li>
-						</ul>
+						
 					</div>
 				</div>
 			@endforeach

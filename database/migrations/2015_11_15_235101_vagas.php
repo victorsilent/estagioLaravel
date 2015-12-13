@@ -16,8 +16,10 @@ class Vagas extends Migration
             $table->increments('id');
             $table->string('titulo');
             $table->string('corpo');
-            $table->bigInteger('min_salario');
-            $table->bigInteger('max_salario');
+            $table->integer('area');
+            $table->integer('semestre');
+            $table->bigInteger('auxilio');
+            $table->integer('carga_horaria');
             $table->string('nome_empresa');
             $table->timestamps();
             $table->timestamp('publicacao');

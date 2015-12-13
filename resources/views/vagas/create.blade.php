@@ -4,42 +4,54 @@
 	<div class="container">
 		<h1>Adicionar nova vaga</h1>
 		<hr>
+		
 		{!! Form::open(['url' => 'vagas']) !!}
-
 			<div class="form-group">
 		    	{!! Form::label('nome_empresa','Nome da empresa:') !!}
-		    	{!! Form::text('nome_empresa',null,['class'=>'form-control']) !!}
-	    	</div>
+		    	{!! Form::text('nome_empresa',null,['class'=>'form-control']); !!}
 
-			<div class="form-group">
 		    	{!! Form::label('titulo','Titulo:') !!}
-		    	{!! Form::text('titulo',null,['class'=>'form-control']) !!}
-	    	</div>
+		    	{!! Form::text('titulo',null,['class'=>'form-control']); !!}
 
-	    	<div class="form-group">
-		    	{!! Form::label('min_salario','Min Salario:') !!}
-		    	{!! Form::text('min_salario',null,['class'=>'form-control']) !!}
-	    	</div>
-
-	    	<div class="form-group">
-		    	{!! Form::label('max_salario','Max Salario:') !!}
-		    	{!! Form::text('max_salario',null,['class'=>'form-control']) !!}
-	    	</div>
-
-	    	<div class="form-group">
 		    	{!! Form::label('corpo','Descrição:') !!}
-		    	{!! Form::textarea('corpo',null,['class'=>'form-control']) !!}
-	    	</div>
-	
-	    	<div class="form-group">
-		    	{!! Form::label('publicacao','Published On:') !!}
-		    	{!! Form::input('date','publicacao',Carbon\Carbon::now()->format('d-m-Y H:i:s'),['class'=>'form-control']) !!}
-	    	</div>
+		    	{!! Form::textarea('corpo',null,array('class' => 'form-control')); !!}
+				
+				{!! Form::label('area','Area:') !!}
+		    	{!! Form::select('area',array(
+			    	'Saude' => 'Saude', 
+			    	'Humanas' => 'Humanas',
+			    	'Exatas' => 'Exatas',
+			    	'Biológicas' => 'Biológicas'),
+		    	null,
+		    	array('class' => 'form-control')); !!}
+
+		    	{!! Form::label('semestre','Semestre') !!}
+		    	{!! Form::select('semestre',array(
+			    	'1' => '1', 
+			    	'2' => '2',
+			    	'3' => '3',
+			    	'4' => '4'),
+		    	null,
+		    	array('class' => 'form-control')); !!}
+
+		    	{!! Form::label('auxilio','Auxilio:') !!}
+		    	{!! Form::text('auxilio',null,array('class' => 'form-control')); !!}
+
+		    	{!! Form::label('horas','Carga horária:') !!}
+		    	{!! Form::select('carga_horaria',array(
+			    	'12' => '12h', 
+			    	'20' => '20h',
+			    	'30' => '30h'),
+		    	null,
+		    	array('class' => 'form-control')); !!}
 
 
 
-	    	<div class="form-group">
-		    	{!! Form::submit('Add article',['class'=>'btn btn-primary form-control']) !!}
+		    	{!! Form::label('publicacao','Published On:',['class' => 'hidden']) !!}
+		    	{!! Form::input('date','publicacao',Carbon\Carbon::now()->format('d-m-Y H:i:s'),['class'=>'form-control hidden']) !!}
+
+		    	<hr>
+		    	{!! Form::submit('Cadastrar Vaga',['class'=>'btn btn-primary form-control']) !!}
 	    	</div>
 
 		{!! Form::close() !!}
