@@ -6,7 +6,7 @@
 					<div class="panel panel-default">
 					  <div class="panel-body">
 					    <div class="form-group">
-					    {!! Form::open(['url' => 'home','method'=>'get']) !!}
+					    {!! Form::open(['url' => 'home']) !!}
 
 						    	{!! Form::label('title','Seleciona uma área:') !!}
 						    	{!! Form::select('area',array(
@@ -20,7 +20,7 @@
 
 						    	{!! Form::label('title','Semestre:') !!}
 						    	{!! Form::select('semestre',array(
-							    	'false' => 'Qualquer',
+							    	false => 'Qualquer',
 							    	'1' => '1', 
 							    	'2' => '2',
 							    	'3' => '3',
@@ -30,7 +30,7 @@
 
 						    	{!! Form::label('auxilio','Valor do auxílio:') !!}
 						    	{!! Form::select('auxilio',array(
-							    	'false' => 'Qualquer',
+							    	false => 'Qualquer',
 							    	'400' => 'R$ 400', 
 							    	'800' => 'R$ 800',
 							    	'1000' => 'R$ 1000',
@@ -40,7 +40,7 @@
 
 						    	{!! Form::label('title','Carga horária:') !!}
 						    	{!! Form::select('horas',array(
-							    	'false' => 'Qualquer',
+							    	false => 'Qualquer',
 							    	'12' => '12h', 
 							    	'20' => '20h',
 							    	'30' => '30h'),

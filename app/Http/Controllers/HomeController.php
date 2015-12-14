@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Vagas;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -19,27 +19,27 @@ class HomeController extends Controller
 
     public function filtro(Request $request){
 
-    	$vagas = Vagas::where(function($query){
+    	$query = Vagas::query();
 
-	    	$area = Input::get('area');
-	    	$semestre = Input::get('semestre');
-	    	$carga_horaria = Input::get('horas');
-	    	$auxilio = Input::get('auxilio');
+	    	$area = Request::get('area');
+	    	$semestre = Request::get('semestre');
+	    	$carga_horaria = Request::get('horas');
+	    	$auxilio = Request::get('auxilio');
 	    	
 		    if($auxilio){
-		    	$query->orWhere('auxilio','>=',$auxilio);
+		    	$query->where('auxilio','>=',$auxilio);
 		    }
 		    if($semestre){
-		    	$query->orWhere('semestre','>=',$semestre);
+		    	$query->where('semestre','>=',$semestre);
 		    }
+		    
 		    if($carga_horaria){
-		    	$query->orWhere('carga_horaria','=',$carga_horaria);
+		    	$query->where('carga_horaria','=',$carga_horaria);
 		    }
 		     if($area){
-		    	$query->orWhere('area','=',$area);
+		    	$query->where('area','=',$area);
 		    }
-
-		})->get();
+		$vagas = $query->get();
     	
     	return view('vagas.show',compact('vagas'));
     	
